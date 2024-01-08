@@ -4,7 +4,7 @@ FROM debian:bookworm-slim
 # Installe les packages nécessaires
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    openssh-server corosync-qnetd corosync-qdevice && \
+    openssh-server corosync-qnetd && \
     rm -rf /var/lib/apt/lists/*
 
 # Crée un répertoire pour stocker les données de corosync
@@ -22,7 +22,7 @@ COPY start.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/start.sh
 
 # Exposer les ports nécessaires
-EXPOSE 22 5404/udp 5405/udp 5406/udp
+EXPOSE 22 5403
 
 # Démarre automatiquement le service SSH lors de la création du conteneur
 # RUN service ssh start
