@@ -1,5 +1,5 @@
 # Utilise l'image Debian Bookworm slim comme base
-FROM debian:bookworm-slim
+FROM debian:bullseye-slim
 
 # Installe les packages nécessaires
 RUN apt-get update && \
