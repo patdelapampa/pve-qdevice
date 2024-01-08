@@ -22,7 +22,7 @@ COPY start.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/start.sh
 
 # Exposer les ports nécessaires
-EXPOSE 22 5403
+EXPOSE 22 5403 5404/udp 5405/udp 5406/udp
 
 # Démarre automatiquement le service SSH lors de la création du conteneur
 # RUN service ssh start
