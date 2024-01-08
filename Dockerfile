@@ -24,5 +24,6 @@ COPY --from=0 / /
 ENV container docker
 STOPSIGNAL SIGRTMIN+3
 VOLUME [ "/sys/fs/cgroup", "/run", "/run/lock", "/tmp" ]
+EXPOSE 22 5403
 CMD ["/usr/local/bin/start.sh"]
 
