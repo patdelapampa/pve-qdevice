@@ -7,7 +7,7 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     openssh-server corosync-qnetd systemd systemd-sysv && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /var/log/alternatives.log /var/log/apt/history.log /var/log/apt/term.log /var/log/dpkg.log
+    rm -rf /var/lib/apt/lists/*
 
 # Crée le répertoire pour la séparation des privilèges SSH
 RUN mkdir -p /run/sshd \
