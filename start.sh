@@ -3,7 +3,7 @@
 # corosync -f
 
 # Exécute le script de configuration du mot de passe
-if [ -n "$TZ" ]; then
+if [ -n "$ROOT_PASSWORD" ]; then
   echo "root:$ROOT_PASSWORD" | chpasswd
 else
   echo "root:pveqdevice" | chpasswd
