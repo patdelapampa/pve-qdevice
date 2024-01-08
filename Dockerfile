@@ -1,19 +1,20 @@
 # Utilise l'image Debian Bookworm slim comme base
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 # Installe les packages nécessaires
 RUN apt-get update && \
+    apt-get dist-upgrade -qy \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    openssh-server corosync-qnetd && \
-    rm -rf /var/lib/apt/lists/*
-
-# Crée un répertoire pour stocker les données de corosync
-RUN mkdir -p /var/lib/corosync
+    openssh-server corosync-qnetd systemd systemd-sysv && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /var/log/alternatives.log /var/log/apt/history.log /var/log/apt/term.log /var/log/dpkg.log
 
 # Crée le répertoire pour la séparation des privilèges SSH
 RUN mkdir -p /run/sshd \
 	&& chmod 0755 /run/sshd \
 	&& chown root:root /run/sshd
+
+RUN chown -R coroqnetd:coroqnetd /etc/corosync/
 
 # Copie le script de démarrage
 COPY start.sh /usr/local/bin/
