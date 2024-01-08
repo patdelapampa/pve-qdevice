@@ -3,7 +3,6 @@ FROM debian:bookworm-slim
 
 # Installe les packages nécessaires
 RUN apt-get update && \
-    apt-get dist-upgrade -qy \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     openssh-server corosync-qnetd systemd systemd-sysv && \
     apt-get clean && \
