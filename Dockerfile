@@ -9,7 +9,7 @@ RUN rm -rf /var/lib/apt/lists/* /var/log/alternatives.log /var/log/apt/history.l
 RUN mkdir -p /run/sshd \
 	&& chmod 0755 /run/sshd \
 	&& chown root:root /run/sshd
-RUN chown -R coroqnetd:coroqnetd /etc/corosync/
+RUN chown -R coroqnetd:coroqnetd /etc/corosync/qnetd /var/run/corosync-qnetd
 RUN systemctl mask -- dev-hugepages.mount sys-fs-fuse-connections.mount
 RUN rm -f /etc/machine-id /var/lib/dbus/machine-id
 # Copie le script de démarrage
